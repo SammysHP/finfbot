@@ -1,7 +1,7 @@
 [irc]
 server = irc.euirc.net
 name = finfbot
-realname = LUH Fachschaft Informatik Bot
+realname = LUH Fachgruppe Informatik Bot
 channel = #inf
 
 [announce]
