@@ -29,6 +29,10 @@ object FinfBot extends App {
       ini.get("bitly").get("key")
     )
 
+  val listenerManger = bot.getConfiguration().getListenerManager()
+  listenerManger.addListener(Mensaplan)
+  listenerManger.addListener(Help)
+
   while (true) {
     try {
       bot.startBot()
