@@ -31,6 +31,8 @@ object FinfBot extends App {
 
   val listenerManger = bot.getConfiguration().getListenerManager()
   listenerManger.addListener(Mensaplan)
+  listenerManger.addListener(About)
+  listenerManger.addListener(Stats)
   listenerManger.addListener(Help)
 
   while (true) {
