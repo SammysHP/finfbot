@@ -1,6 +1,6 @@
 import org.pircbotx.PircBotX
 import org.pircbotx.hooks.ListenerAdapter
-import org.pircbotx.hooks.events.{ActionEvent, JoinEvent, KickEvent, MessageEvent, NickChangeEvent, PartEvent, QuitEvent, TopicEvent}
+import org.pircbotx.hooks.events._
 
 import java.io.FileWriter
 import java.util.Date
@@ -55,6 +55,16 @@ case class Logger(logDirectoryPath: String) extends ListenerAdapter[PircBotX] {
       file.close
     } catch {
       case e: Throwable => // Do nothing
+    }
+  }
+
+  override def onPrivateMessage(event: PrivateMessageEvent[PircBotX]) = {
+    (event.getMessage().split(" ").toList) match {
+      case "logs" :: Nil => {
+        event.respond("Siehe http://bit.ly/inflogs")
+      }
+
+      case _ => //Nothing to do
     }
   }
 }

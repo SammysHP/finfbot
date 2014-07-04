@@ -47,6 +47,7 @@ object Stats extends ListenerAdapter[PircBotX] {
         event.respond("Gestartet:             " + startedString)
         event.respond("Laufzeit:              " + runtimeString)
         event.respond("Angekündigte Beiträge: " + announces)
+        event.respond("Channel Statistiken:   http://bit.ly/infstats")
       }
 
       case _ => //Nothing to do

@@ -8,7 +8,7 @@ object Help extends ListenerAdapter[PircBotX] {
   override def onPrivateMessage(event: Message) = {
     (event.getMessage().split(" ").toList) match {
       case "help" :: Nil => {
-        event.respond("Commands: about, mensa, stats")
+        event.respond("Commands: about, logs, mensa, stats")
         event.respond("See \"help command\" for more details.")
       }
 
