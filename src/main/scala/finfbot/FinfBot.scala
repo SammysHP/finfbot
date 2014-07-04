@@ -29,11 +29,15 @@ object FinfBot extends App {
       ini.get("bitly").get("key")
     )
 
-  val listenerManger = bot.getConfiguration().getListenerManager()
-  listenerManger.addListener(Mensaplan)
-  listenerManger.addListener(About)
-  listenerManger.addListener(Stats)
-  listenerManger.addListener(Help)
+  val listenerManager = bot.getConfiguration().getListenerManager()
+  listenerManager.addListener(Mensaplan)
+  listenerManager.addListener(About)
+  listenerManager.addListener(Stats)
+  listenerManager.addListener(Help)
+  ini.get("logger").get("directory") match {
+    case path: String if !path.isEmpty => listenerManager.addListener(Logger(path))
+    case _ => // Do nothing
+  }
 
   while (true) {
     try {
