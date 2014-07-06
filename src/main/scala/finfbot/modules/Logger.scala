@@ -60,6 +60,10 @@ case class Logger(logDirectoryPath: String) extends ListenerAdapter[PircBotX] {
 
   override def onPrivateMessage(event: PrivateMessageEvent[PircBotX]) = {
     (event.getMessage().split(" ").toList) match {
+      case "help" :: "logs" :: _ => {
+        event.respond("logs - Der Bot loggt den Channel, hierüber kommt ihr an die Logs.")
+      }
+
       case "logs" :: Nil => {
         event.respond("Siehe http://bit.ly/inflogs")
       }

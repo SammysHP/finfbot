@@ -6,7 +6,9 @@ class PeriodicRssFetcher(url: String, pollInterval: Long, callback: String => Un
   val dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US)
   var lastMessageTime: Long = 0;
 
-  override def run() {
+  setDaemon(true)
+
+  override def run(): Unit = {
     while (true) {
       try {
         val xml = scala.xml.XML.load(new java.net.URL(url))
@@ -34,7 +36,7 @@ class PeriodicRssFetcher(url: String, pollInterval: Long, callback: String => Un
         if (posts.size > 0)
           lastMessageTime = posts.last._3
       } catch {
-        case e: Throwable => None
+        case e: Throwable => // Loading of RSS failed, no problem.
       }
 
       Thread.sleep(pollInterval)

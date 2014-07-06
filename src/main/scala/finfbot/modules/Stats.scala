@@ -43,6 +43,10 @@ object Stats extends ListenerAdapter[PircBotX] {
 
   override def onPrivateMessage(event: Message) = {
     (event.getMessage().split(" ").toList) match {
+      case "help" :: "stats" :: _ => {
+        event.respond("stats - Statistik zum Bot")
+      }
+
       case "stats" :: Nil => {
         event.respond("Gestartet:             " + startedString)
         event.respond("Laufzeit:              " + runtimeString)

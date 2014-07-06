@@ -7,6 +7,10 @@ object About extends ListenerAdapter[PircBotX] {
 
   override def onPrivateMessage(event: Message) = {
     (event.getMessage().split(" ").toList) match {
+      case "help" :: "about" :: _ => {
+        event.respond("about - Infos über den Bot")
+      }
+
       case "about" :: Nil => {
         event.respond("finfbot - der Bot der Fachgruppe Informatik an der Uni Hannover")
         event.respond("Source: https://github.com/SammysHP/finfbot")
