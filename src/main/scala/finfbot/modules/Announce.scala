@@ -17,7 +17,7 @@ object Announce {
     new PeriodicRssFetcher(
         url,
         interval * 1000,
-        (s: String) => { Stats.announces++; bot.sendIRC().message(channel, s) },
+        (s: String) => { Stats.announces++; bot.sendIRC().notice(channel, s) },
         urlFilter
       ).start()
   }
