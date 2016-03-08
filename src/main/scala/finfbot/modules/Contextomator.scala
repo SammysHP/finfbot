@@ -23,14 +23,18 @@ object Contextomator extends ListenerAdapter[PircBotX] {
 
     // Direct interaction with the bot
     if (message startsWith event.getBot.getNick.toLowerCase) {
-      // Default fallback
-      event.getChannel.send.message("I'm sorry " + user + ", I'm afraid I can't do that...")
+      if (message contains "ricklink") {
+        getRicklink foreach(link => event.getChannel.send.message(link))
+      } else {
+        // Default fallback
+        event.getChannel.send.message("I'm sorry " + user + ", I'm afraid I can't do that...")
+      }
       return
     }
 
-    // Generic context sensitive actions
-    if (message contains "ricklink") {
-      getRicklink foreach(link => event.getChannel.send.message(link))
+    // special autoricklink for rick
+    if ((user.toLowerCase contains "rick") && (message contains "ircz.de/p")) {
+      getRicklink foreach(link => event.getChannel.send.message("Nope! " + link))
     }
   }
 
