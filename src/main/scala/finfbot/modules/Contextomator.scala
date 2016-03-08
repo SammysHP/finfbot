@@ -8,7 +8,7 @@ object Contextomator extends ListenerAdapter[PircBotX] {
 
   def getRicklink(): Option[String] = {
     try {
-      val con: HttpURLConnection = new URL("http://ircz.de/random").openConnection().asInstanceOf[HttpURLConnection]
+      val con: HttpURLConnection = new URL("https://ircz.de/random").openConnection().asInstanceOf[HttpURLConnection]
       con.setInstanceFollowRedirects(false)
       con.connect()
       Some(con.getHeaderField("Location").toString)
